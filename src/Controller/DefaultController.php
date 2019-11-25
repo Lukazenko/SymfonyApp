@@ -19,6 +19,7 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
+        //Võtab kõik kontaktid andmebaasist
         $contacts = $this->getDoctrine()->getRepository(Contacts::class)->findAll();
         
 

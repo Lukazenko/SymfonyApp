@@ -39,11 +39,13 @@
     <tr>
         <th>Name</th>
         <th>Number</th>
+        <th>Actions</th>
     </tr>
     <tr>
         {% for contact in contacts %}
         <td>{{ contact.name }}</td>
         <td>{{ contact.number }}</td>
+        <td><a href="/article/{{ contact.id }}" class="btn btn-dark">delete</a></td>
     </tr>
     {% endfor %}
 
