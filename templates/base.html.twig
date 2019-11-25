@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{{ title}}{% endblock %}</title>
+    <title>{% block title %}Phonebook{% endblock %}</title>
     {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="style.css">
     {% endblock %}
@@ -11,15 +11,13 @@
 </head>
 
 <body>
-
-    {% block body %}
     {{ include('header.html.twig') }}
-
-    {{ include('content.html.twig') }}
-    
+    <div class="container">
+        {% block body %}{% endblock %}
+        
+    </div>
     {{ include('footer.html.twig') }}
-
-    {% endblock %}
+    
     {% block javascripts %}{% endblock %}
 </body>
 
