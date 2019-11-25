@@ -7,51 +7,25 @@
 
 <div id="page-container">
 
-    <div id="content-wrap">
-<h3 class="pealkiri">Sisesta kontakti nimi ja number</h3>
-
-
-
-<div class="content">
-    <form action="/action_page.php">
-        <label for="name">Nimi</label>
-        <input type="text" id="name" name="name" placeholder="Nimi..">
-
-        <label for="number">Number</label>
-        <input type="text" id="number" name="number" placeholder="Number..">
-
-        <input type="submit" value="Add to contacts">
-        <input type="submit" value="Show contacts">
-
-    </form>
-
     
 
+    <h1 class="pealkiri">Contacts</h1>
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            {% for contact in contacts %}
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.number }}</td>
+            <td><a href="{{ contact.id }}" class="btn btn-danger">delete</a></td>
+        </tr>
+        {% endfor %}
 
-
-
-</div>
-</div>
-
-
-<h2 class="pealkiri">Phonebook</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Number</th>
-        <th>Actions</th>
-    </tr>
-    <tr>
-        {% for contact in contacts %}
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.number }}</td>
-        <td><a href="/article/{{ contact.id }}" class="btn btn-dark">delete</a></td>
-    </tr>
-    {% endfor %}
-
-</table>
-
-
+    </table>
 
 </div>
 
