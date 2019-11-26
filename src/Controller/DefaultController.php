@@ -17,7 +17,7 @@ class DefaultController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="mainpage")
      * @Method({"GET", "POST"})
      */
     public function index()
@@ -46,7 +46,18 @@ class DefaultController extends AbstractController
             ->add('number', TextType::class, array('attr' => array('class' => 'form-control')))
             ->add('save', SubmitType::class, array('attr' => array('class' => 'btn btn-primary')), ['label' => 'Create Contact'])
             ->getForm();
+            
+        $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()){
+            $contact = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('mainpage');
+        }
         
 
         return $this->render('new.html.twig', [
