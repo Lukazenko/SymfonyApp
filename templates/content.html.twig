@@ -15,7 +15,7 @@
     </div>
 
 
-    <table>
+    <table id="tabel">
         <tr>
             <th>Name</th>
             <th>Number</th>
@@ -25,7 +25,10 @@
             {% for contact in contacts %}
             <td>{{ contact.name }}</td>
             <td>{{ contact.number }}</td>
-            <td><a href="{{ contact.id }}" class="btn btn-danger">delete</a></td>
+            <td>
+                <a href="./update/{{ contact.id }}" class="btn btn-warning">update</a>
+                <a data-id="{{ contact.id }}" class="btn btn-danger">delete</a>
+            </td>
         </tr>
         {% endfor %}
 
@@ -33,13 +36,11 @@
 
 </div>
 
-{{ include('footer.html.twig') }}
 
 
 
+{% endblock %}
 
-
-
-
-
+{% block javascripts %}
+    <script src="script.js"></script>
 {% endblock %}
